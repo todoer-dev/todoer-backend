@@ -9,7 +9,7 @@ module API
         end
 
         result.failure do |error_message|
-          render json: { error: error_message }
+          render json: { error: error_message }, status: :unauthorized
         end
       end
     end
