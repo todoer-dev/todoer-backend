@@ -4,8 +4,8 @@ module Authentication
   class GenerateTokenForUser
     include Dry::Transaction
 
-    step find_and_authenticate
-    map generate_token
+    step :find_and_authenticate
+    map :generate_token
 
     private
 

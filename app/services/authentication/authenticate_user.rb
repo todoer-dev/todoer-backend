@@ -4,9 +4,10 @@ module Authentication
   class AuthenticateUser
     include Dry::Transaction
 
-    step parse_auth_header
-    step decode_token
-    step authenticate_user
+    step :parse_auth_header
+    step :decode_token
+    step :validate_token_payload
+    step :authenticate_user
 
     private
 
@@ -27,7 +28,17 @@ module Authentication
       if token_payload.present?
         Success({ token_payload: token_payload })
       else
-        Failure('Invalid token')
+        invalid_token
+      end
+    end
+
+    def validate_token_payload(input)
+      valid = input[:token_payload][:exp] < DateTime.current
+
+      if valid
+        Success(input)
+      else
+        invalid_token
       end
     end
 
@@ -37,8 +48,14 @@ module Authentication
       if user.present?
         Success(user)
       else
-        Failure('Invalid token')
+        invalid_token
       end
+    end
+
+    private
+
+    def invalid_token
+      Failure('Invalid token')
     end
   end
 end
