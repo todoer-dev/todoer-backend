@@ -1,0 +1,6 @@
+# A set of default variables not ignored by git
+# Any other sophisticated variables should be added manually
+
+SECRET_KEY_BASE: "not_to_be_used_in_production"
+
+RAILS_MAX_THREADS: "1"
