@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_many :tasks
 
+  validates_uniqueness_of :email
+
   def anonymous?
     false
   end

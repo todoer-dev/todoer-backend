@@ -3,5 +3,6 @@ Rails.application.routes.draw do
     post 'authentication', to: 'authentication#create'
 
     resources :tasks
+    resources :users, only: [:create]
   end
 end

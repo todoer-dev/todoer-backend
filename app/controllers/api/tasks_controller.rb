@@ -28,12 +28,12 @@ module API
 
     # POST /tasks
     def create
-      @task = current_user.tasks.new(task_params)
+      task = current_user.tasks.new(task_params)
 
-      if @task.save
-        render json: @task, status: :created
+      if task.save
+        render json: task, status: :created
       else
-        render json: @task.errors, status: :unprocessable_entity
+        render json: task.errors, status: :unprocessable_entity
       end
     end
 
