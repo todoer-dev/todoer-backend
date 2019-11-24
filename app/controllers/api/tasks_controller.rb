@@ -8,7 +8,6 @@ module API
       :description,
       :due_date,
       :completed_at,
-      :created_at,
 
       labels: []
     ]

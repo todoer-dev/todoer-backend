@@ -14,10 +14,6 @@ module API
       end
     end
 
-    def show
-      render json: User.find(params[:id]), status: :ok
-    end
-
     private
 
     def user_params
