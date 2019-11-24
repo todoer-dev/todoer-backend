@@ -33,7 +33,7 @@ module Authentication
     end
 
     def validate_token_payload(input)
-      valid = input[:token_payload][:exp] < DateTime.current
+      valid = input[:token_payload][:expiration_time] < DateTime.current.to_i
 
       if valid
         Success(input)
@@ -51,8 +51,6 @@ module Authentication
         invalid_token
       end
     end
-
-    private
 
     def invalid_token
       Failure('Invalid token')

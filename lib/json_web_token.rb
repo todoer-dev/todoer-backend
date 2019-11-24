@@ -5,7 +5,7 @@ class JsonWebToken
 
   class << self
     def encode(payload, exp = EXPIRATION_TIME.from_now)
-      payload[:exp] = exp.to_i
+      payload[:expiration_time] = exp.to_i
       JWT.encode(payload, Figaro.env.secret_key_base)
     end
 
