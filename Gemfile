@@ -10,6 +10,7 @@ gem 'jwt'
 gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 gem 'dry-transaction', '~> 0.13.0'
 gem 'figaro'
+gem 'active_model_serializers', '~> 0.10.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production

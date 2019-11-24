@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
 
   def current_user
     @current_user ||= Authentication::AuthenticateUser.new.call(headers: request.headers) do |result|
-      result.success(&:yield_self)
+      result.success(&:itself)
       result.failure { |_error| AnonymousUser.instance }
     end
   end
